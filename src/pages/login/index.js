@@ -4,8 +4,6 @@ import { Button } from 'antd'
 import { HomeConfig } from 'services/config'
 import services from 'services'
 
-
-
 export default function Login() {
 
     const test = async (params) => {

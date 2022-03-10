@@ -15,7 +15,6 @@ const Menus = (props) => {
 
         return data.map(((item, index) => {
             if (!!item.children?.length) {  //如果有子节点，继续递归调用，直到没有子节点
-                console.log('item.children?.length: ', item.children?.length);
                 return (
                     <SubMenu
                         title={item.title}

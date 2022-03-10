@@ -1,12 +1,18 @@
 // loading组件
 import React from "react";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from 'antd'
 import "./index.less";
+import {useSelector} from 'react-redux'
 
-const Loading = () => {
+const Loading = (props) => {
+
+   const loading = useSelector((state) => state.app.loading);
+
   return (
-    <div className="base-loading flex-center">
-      <LoadingOutlined />
+    <div className={`loading-mask  ${loading ? "" : "loading-hidden"}`}>
+      <Spin
+        spinning={loading}
+        tip="正在加载中......" />
     </div>
   );
 };
