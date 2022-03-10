@@ -6,10 +6,12 @@ import NotFind from "components/notFind";
 
 import { mainRouteConfig } from "./config";
 
-const renderRouter = (routerList, isLogin) => {
+
+const renderRouter = (routerList) => {
     return routerList.map((item) => {
         const { path, exact, noAuth, children } = item;
-        if (!noAuth && !isLogin) return <Route path="*" element={<Navigate to="/login" />} />;
+        const token = localStorage.getItem('token')
+        if (!noAuth && !token) return <Route path="*" element={<Navigate to="/login" />} />;
         return <Route
             key={path}
             exact={exact}
@@ -30,12 +32,12 @@ const renderRouter = (routerList, isLogin) => {
 
 
 const Routers = (props) => {
-    const { isLogin = true } = props;
+    // const { isLogin = true } = props;
     return (
         <Router>
             <React.Suspense fallback={<Loading />}>
                 <Routes>
-                    {renderRouter(mainRouteConfig, isLogin)}
+                    {renderRouter(mainRouteConfig)}
                     < Route path="*" element={<NotFind to="/login" />} />
                 </Routes>
             </React.Suspense>
