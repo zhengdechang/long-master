@@ -12,9 +12,8 @@ export default function System() {
         dispatch(changeLoading(true));
     }
 
-    const test = async (params) => {
+    const test = async () => {
         changeLoadings()
-
     };
 
     return (

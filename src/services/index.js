@@ -1,5 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
+import { changeLoading } from 'store/reducer/app/action'
+import store from 'store'
 
 
 const services = axios.create({
@@ -15,12 +17,15 @@ const services = axios.create({
     timeout: 30000
 });
 
+
 // 请求拦截器
 services.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("token") || "dev"; // 获取token，并将其添加至请求头中
         if (token) config.headers.Authorization = `${token}`;
-        !config.hideLoading && message.loading("加载中...", 0)
+        // !config.hideLoading && message.loading("加载中...", 1)
+        !config.hideLoading && store.dispatch(changeLoading(true))
+
         return config;
     },
     error => {
@@ -33,7 +38,7 @@ services.interceptors.request.use(
 // 响应拦截器
 services.interceptors.response.use(
     (response) => {
-        // Toast.hide();
+        store.dispatch(changeLoading(false))
         const { headers, data } = response;
         if (headers.token) localStorage.setItem("token", response.data.token);
         // if (data.code < 200 || data.code >= 300 || !data.success || data.code !== "000000") message.error(data.msg);
@@ -41,7 +46,7 @@ services.interceptors.response.use(
         return data;
     },
     error => {
-        // Toast.hide();
+        store.dispatch(changeLoading(false))
         if (axios.isCancel(error)) {
             console.log("repeated request: " + error.message);
         } else {
@@ -53,5 +58,7 @@ services.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+
+
 
 export default services;

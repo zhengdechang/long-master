@@ -2,11 +2,12 @@
 import React from "react";
 import { Spin } from 'antd'
 import "./index.less";
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const Loading = (props) => {
 
-   const loading = useSelector((state) => state.app.loading);
+  const loading = useSelector((state) => state.app.loading);
+
 
   return (
     <div className={`loading-mask  ${loading ? "" : "loading-hidden"}`}>

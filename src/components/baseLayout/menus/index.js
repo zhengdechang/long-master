@@ -4,12 +4,14 @@ import './index.less'
 import { Link } from "react-router-dom";
 import {
     UserOutlined,
+    MenuUnfoldOutlined,
+    MenuFoldOutlined,
 } from '@ant-design/icons';
 
 const { SubMenu } = Menu;
 
 const Menus = (props) => {
-    const { menuList } = props
+    const { menuList, collapsed, setCollapsed } = props
     //递归渲染菜单
     const getNavMenuItems = (data = []) => {
 
@@ -41,9 +43,20 @@ const Menus = (props) => {
 
     return (
         <div className='menu'>
-            <Menu theme="dark" mode="inline" >
+            <Menu mode="inline" >
                 {getNavMenuItems(menuList)}
             </Menu>
+            <div className='bottom-icon'>
+                <div
+                    onClick={() => { setCollapsed(v => !v) }}
+                    className='header-icon'
+                    style={{ paddingLeft: collapsed ? '34px' : '19px' }}
+                >
+                    {
+                        collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
+                    }
+                </div>
+            </div>
         </div >
     )
 }

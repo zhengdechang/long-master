@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  background: #f0f2f5;
+  background-image: url("https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg");
+  background-repeat: no-repeat;
+  background-position: center 110px;
+  background-size: 100%;
+  .content {
+    flex: 1;
+    padding: 32px 0;
+    .title {
+      margin-left: 36px;
+      text-align: center;
+      margin-top: 3%;
+      .title-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        line-height: 44px;
+        .logo {
+          width: 44px;
+          height: 44px;
+          line-height: 51px;
+          font-size: 32px;
+          margin-right: 12px;
+        }
+        .logo-title {
+          position: relative;
+          top: 2px;
+          color: rgba(0, 0, 0, 0.85);
+          font-weight: 600;
+          font-size: 33px;
+        }
+      }
+      .title-desc {
+        margin-top: 12px;
+        margin-bottom: 40px;
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 14px;
+      }
+    }
+    .form {
+      width: 328px;
+      margin: 0 auto;
+    }
+  }
+}
