@@ -5,13 +5,21 @@ import './index.less'
 import { Form, Input, Button, Checkbox, } from 'antd';
 import { AppstoreTwoTone } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom';
+import store from 'store'
+import { changeLogin } from 'store/reducer/app/action'
+
+
 export default function Login(props) {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    
 
     const onFinish = (values) => {
+        console.log('values: ', values);
         localStorage.setItem('token', 'dev')
-        navigate('/ ')
+        store.dispatch(changeLogin(true))
+        navigate('/',{replace:true})
     };
+    
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -41,7 +49,7 @@ export default function Login(props) {
                         </span>
                     </div>
                     <div className='title-desc'>
-                        Ant Design 是西湖区最具影响力的 Web 设计规范
+                        一套完整的企业管理系统
                     </div>
                 </div>
                 <div className='form'>

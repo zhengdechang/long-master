@@ -7,10 +7,18 @@ import Routers from './routers'
 import store from "store/index";
 import { Provider } from "react-redux";
 import Loading from 'components/loading'
+import { useSelector } from 'react-redux';
+
+
+//登录时路由刷新
+const RenderRouter = () => {
+  const state = useSelector(state => state.app)
+  return <Routers login={state?.login} />
+}
 
 ReactDOM.render(
   <Provider Provider store={store} >
-    <Routers />
+    <RenderRouter></RenderRouter>
     <Loading></Loading>
   </Provider >
   ,

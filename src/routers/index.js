@@ -11,6 +11,7 @@ const renderRouter = (routerList) => {
     return routerList.map((item) => {
         const { path, exact, noAuth, children } = item;
         const token = localStorage.getItem('token')
+        console.log(token)
         if (!noAuth && !token) return <Route path="*" element={<Navigate to="/login" />} />;
         return <Route
             key={path}
@@ -32,7 +33,7 @@ const renderRouter = (routerList) => {
 
 
 const Routers = (props) => {
-    // const { isLogin = true } = props;
+    console.log(props.login, props)
     return (
         <Router>
             <React.Suspense fallback={<Loading />}>
