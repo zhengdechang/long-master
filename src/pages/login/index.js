@@ -1,6 +1,6 @@
 import React from 'react'
-import { HomeConfig } from 'services/config'
-import services from 'services'
+// import { HomeConfig } from 'services/config'
+// import services from 'services'
 import './index.less'
 import { Form, Input, Button, Checkbox, } from 'antd';
 import { AppstoreTwoTone } from '@ant-design/icons'
@@ -11,30 +11,30 @@ import { changeLogin } from 'store/reducer/app/action'
 
 export default function Login(props) {
     const navigate = useNavigate();
-    
+
 
     const onFinish = (values) => {
         console.log('values: ', values);
         localStorage.setItem('token', 'dev')
         store.dispatch(changeLogin(true))
-        navigate('/',{replace:true})
+        navigate('/', { replace: true })
     };
-    
+
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
 
-    const test = async (params) => {
-        const { code, data } = await services({
-            url: HomeConfig.Test,
-            method: "post",
-            data: { ...params }
-        });
-        if (code === "200" && data) {
-            console.log(data)
-        }
-    };
+    // const test = async (params) => {
+    //     const { code, data } = await services({
+    //         url: HomeConfig.Test,
+    //         method: "post",
+    //         data: { ...params }
+    //     });
+    //     if (code === "200" && data) {
+    //         console.log(data)
+    //     }
+    // };
 
     return (
         <div className='container'>
@@ -80,7 +80,6 @@ export default function Login(props) {
                         >
                             <Input />
                         </Form.Item>
-
                         <Form.Item
                             label="密码"
                             name="password"
@@ -104,7 +103,6 @@ export default function Login(props) {
                         >
                             <Checkbox>记住密码</Checkbox>
                         </Form.Item>
-
                         <Form.Item
                             wrapperCol={{
                                 offset: 8,
