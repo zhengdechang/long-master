@@ -36,7 +36,6 @@ const Menus = (props) => {
                 >
                     <Link to={item.link}>{item.title}</Link>
                 </Menu.Item >)
-
         })
         )
     }

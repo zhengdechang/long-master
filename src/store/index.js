@@ -1,10 +1,14 @@
 import thunk from "redux-thunk";
 import { combineReducers, createStore, applyMiddleware } from "redux";
-import App from "store/reducer/app";
+import app from "store/reducer/app";
+import cornerstone from "store/reducer/cornerstone";
 
 const reducers = {
-    app: App
+    app,
+    cornerstone,
 };
+
+
 
 const store = applyMiddleware(thunk)(createStore)(combineReducers(reducers));
 export default store;
@@ -12,7 +16,7 @@ export default store;
 // 调用方式
 // const dispatch = useDispatch();
 
-// //    const loading = useSelector((state) => state.app.loading);
+ //    const loading = useSelector((state) => state.app.loading);
 
 // const changeLoadings = () => {
 //     dispatch(changeLoading(true));
